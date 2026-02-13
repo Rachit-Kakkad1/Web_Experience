@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Styles -->
@@ -20,17 +20,33 @@
 </head>
 
 <body>
+    <!-- ═══ CUSTOM CURSOR ═══ -->
+    <div class="cursor" id="cursor">
+        <div class="cursor__dot"></div>
+    </div>
+    <div class="cursor__trail" id="cursor-trail"></div>
+
+    <!-- ═══ CINEMATIC GRAIN OVERLAY ═══ -->
+    <div class="grain-overlay"></div>
+
+    <!-- ═══ SCROLL PROGRESS ═══ -->
+    <div class="scroll-progress" id="scroll-progress"></div>
 
     <!-- ═══════════════════════════════════════════════ -->
     <!-- PRELOADER -->
     <!-- ═══════════════════════════════════════════════ -->
     <div id="preloader">
         <div class="preloader__content">
-            <div class="preloader__logo">FORGE</div>
+            <div class="preloader__glitch" data-text="FORGE">FORGE</div>
+            <div class="preloader__dna">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
             <div class="preloader__bar-track">
                 <div class="preloader__bar-fill"></div>
             </div>
-            <div class="preloader__text">LOADING STRENGTH LAB...</div>
+            <div class="preloader__text">INITIALIZING STRENGTH LAB...</div>
+            <div class="preloader__counter" id="preloader-counter">0%</div>
         </div>
     </div>
 
@@ -39,18 +55,22 @@
     <!-- ═══════════════════════════════════════════════ -->
     <nav id="navbar" class="navbar">
         <div class="navbar__logo">
-            <span class="navbar__logo-icon">⚡</span>
-            <span class="navbar__logo-text">FORGE</span>
+            <div class="navbar__logo-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor" />
+                </svg>
+            </div>
+            <span class="navbar__logo-text" data-scramble>FORGE</span>
         </div>
         <ul class="navbar__links">
-            <li><a href="#hero" class="navbar__link active">Home</a></li>
-            <li><a href="#products" class="navbar__link">Products</a></li>
-            <li><a href="#stack" class="navbar__link">Build Stack</a></li>
-            <li><a href="#transform" class="navbar__link">Transform</a></li>
+            <li><a href="#hero" class="navbar__link active" data-hover="Home"><span>Home</span></a></li>
+            <li><a href="#products" class="navbar__link" data-hover="Arsenal"><span>Arsenal</span></a></li>
+            <li><a href="#stack" class="navbar__link" data-hover="Build Stack"><span>Build Stack</span></a></li>
+            <li><a href="#transform" class="navbar__link" data-hover="Transform"><span>Transform</span></a></li>
         </ul>
-        <button class="navbar__cta magnetic-btn" data-magnetic>
-            <span>Shop Now</span>
-            <div class="btn-glow"></div>
+        <button class="navbar__cta magnetic-btn" data-magnetic data-cursor-text="LET'S GO">
+            <span class="navbar__cta-text">Shop Now</span>
+            <div class="navbar__cta-bg"></div>
         </button>
     </nav>
 
@@ -59,37 +79,49 @@
     <!-- ═══════════════════════════════════════════════ -->
     <section id="hero" class="hero">
         <canvas id="hero-canvas"></canvas>
-        <div class="hero__particles" id="particles"></div>
+        <div class="hero__gradient-orbs">
+            <div class="hero__orb hero__orb--1"></div>
+            <div class="hero__orb hero__orb--2"></div>
+            <div class="hero__orb hero__orb--3"></div>
+        </div>
+        <div class="hero__grid-bg"></div>
 
         <div class="hero__content">
             <div class="hero__badge">
                 <span class="hero__badge-dot"></span>
-                <span>NEW SEASON DROP</span>
+                <span class="hero__badge-text">NEW SEASON DROP</span>
+                <span class="hero__badge-year">2026</span>
             </div>
-            <h1 class="hero__title" data-split>
-                <span class="hero__title-line">ENGINEER</span>
-                <span class="hero__title-line accent">YOUR</span>
-                <span class="hero__title-line">STRENGTH</span>
+            <h1 class="hero__title">
+                <div class="hero__title-line-wrap"><span class="hero__title-line">ENGINEER</span></div>
+                <div class="hero__title-line-wrap"><span class="hero__title-line accent-line">YOUR</span></div>
+                <div class="hero__title-line-wrap"><span class="hero__title-line">STRENGTH</span></div>
             </h1>
-            <p class="hero__tagline" data-split>Science-forged supplements for those who refuse to be average.</p>
+            <p class="hero__tagline">Science-forged supplements for those who refuse to be average.</p>
+
             <div class="hero__actions">
                 <a href="#products" class="hero__btn hero__btn--primary magnetic-btn" data-magnetic>
-                    <span>Explore Products</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M7 17l9.2-9.2M17 17V7H7" />
-                    </svg>
-                    <div class="btn-glow"></div>
+                    <span class="hero__btn-text">Explore Products</span>
+                    <span class="hero__btn-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M7 17l9.2-9.2M17 17V7H7" />
+                        </svg>
+                    </span>
+                    <div class="hero__btn-shine"></div>
                 </a>
                 <a href="#stack" class="hero__btn hero__btn--ghost magnetic-btn" data-magnetic>
-                    <span>Build Your Stack</span>
-                    <div class="btn-glow"></div>
+                    <span class="hero__btn-text">Build Your Stack</span>
+                    <div class="hero__btn-border"></div>
                 </a>
             </div>
         </div>
 
         <div class="hero__scroll-hint" id="scroll-hint">
-            <div class="hero__scroll-line"></div>
-            <span>SCROLL TO EXPLORE</span>
+            <div class="hero__scroll-mouse">
+                <div class="hero__scroll-wheel"></div>
+            </div>
+            <span>SCROLL</span>
         </div>
 
         <div class="hero__stats">
@@ -97,72 +129,139 @@
                 <span class="hero__stat-num" data-count="50000">0</span>
                 <span class="hero__stat-label">Athletes Fueled</span>
             </div>
+            <div class="hero__stat-divider"></div>
             <div class="hero__stat">
                 <span class="hero__stat-num" data-count="99">0</span>
-                <span class="hero__stat-label">% Pure Protein</span>
+                <span class="hero__stat-label">% Pure Isolate</span>
             </div>
+            <div class="hero__stat-divider"></div>
             <div class="hero__stat">
                 <span class="hero__stat-num" data-count="12">0</span>
-                <span class="hero__stat-label">Lab Tested Flavors</span>
+                <span class="hero__stat-label">Lab Flavors</span>
             </div>
         </div>
+
+        <!-- Floating side text -->
+        <div class="hero__side-text hero__side-text--left">PERFORMANCE FUEL</div>
+        <div class="hero__side-text hero__side-text--right">EST. 2024</div>
     </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- MARQUEE DIVIDER -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="marquee">
+        <div class="marquee__track">
+            <span>WHEY ISOLATE</span><span class="marquee__dot">◆</span>
+            <span>CREATINE</span><span class="marquee__dot">◆</span>
+            <span>PRE-WORKOUT</span><span class="marquee__dot">◆</span>
+            <span>MASS GAINER</span><span class="marquee__dot">◆</span>
+            <span>BCAA</span><span class="marquee__dot">◆</span>
+            <span>PROTEIN BAR</span><span class="marquee__dot">◆</span>
+            <span>WHEY ISOLATE</span><span class="marquee__dot">◆</span>
+            <span>CREATINE</span><span class="marquee__dot">◆</span>
+            <span>PRE-WORKOUT</span><span class="marquee__dot">◆</span>
+            <span>MASS GAINER</span><span class="marquee__dot">◆</span>
+            <span>BCAA</span><span class="marquee__dot">◆</span>
+            <span>PROTEIN BAR</span><span class="marquee__dot">◆</span>
+        </div>
+    </div>
 
     <!-- ═══════════════════════════════════════════════ -->
     <!-- SECTION 2: SCROLL-DRIVEN PRODUCT SHOWCASE -->
     <!-- ═══════════════════════════════════════════════ -->
     <section id="products" class="products-intro">
         <div class="products-intro__content">
-            <span class="section-label">THE ARSENAL</span>
-            <h2 class="section-title" data-split>Premium<br><span class="accent">Fuel</span> Collection</h2>
+            <span class="section-label"><span class="section-label__line"></span>THE ARSENAL</span>
+            <h2 class="section-title">Premium<br><span class="accent">Fuel</span> Collection</h2>
             <p class="section-desc">Each formula engineered in our lab. Zero compromises. Maximum results.</p>
         </div>
+        <div class="products-intro__count">04 <span>PRODUCTS</span></div>
     </section>
 
     <!-- Product 1: Whey Isolate -->
-    <section class="product-scene" id="product-whey" data-product="whey" data-color="#39ff14">
+    <section class="product-scene" id="product-whey" data-product="whey" data-accent="#39ff14">
         <div class="product-scene__bg"></div>
+        <div class="product-scene__noise"></div>
         <div class="product-scene__container">
             <div class="product-scene__visual">
                 <div class="product-scene__glow"></div>
+                <div class="product-scene__ring"></div>
                 <div class="product-scene__image-wrap">
                     <img src="https://images.unsplash.com/photo-1593095948071-474c5cc2c462?w=800&q=80"
-                        alt="Whey Protein Isolate" class="product-scene__image" />
+                        alt="Whey Protein Isolate" class="product-scene__image" loading="lazy" />
+                    <div class="product-scene__image-overlay"></div>
                 </div>
-                <div class="product-scene__particles"></div>
+                <div class="product-scene__float-tag">BEST SELLER</div>
             </div>
             <div class="product-scene__info">
                 <span class="product-scene__number">01</span>
+                <div class="product-scene__category">PROTEIN</div>
                 <h3 class="product-scene__name">WHEY ISOLATE<br><span class="accent">PRO-X</span></h3>
                 <p class="product-scene__description">Ultra-filtered whey isolate with 25g pure protein per serving.
                     Zero sugar. Zero fillers. Maximum muscle synthesis.</p>
                 <div class="product-scene__stats">
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="83, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">25g</span>
                         <span class="stat-card__label">Protein</span>
                     </div>
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="0, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">0g</span>
                         <span class="stat-card__label">Sugar</span>
                     </div>
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="48, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">120</span>
                         <span class="stat-card__label">Calories</span>
                     </div>
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="55, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">5.5g</span>
                         <span class="stat-card__label">BCAAs</span>
                     </div>
                 </div>
                 <div class="product-scene__footer">
                     <div class="product-scene__price">
-                        <span class="price-currency">₹</span>
-                        <span class="price-value" data-price="2499">0</span>
+                        <span class="price-label">PRICE</span>
+                        <div class="price-amount">
+                            <span class="price-currency">₹</span>
+                            <span class="price-value" data-price="2499">0</span>
+                        </div>
                     </div>
                     <button class="product-scene__cart-btn magnetic-btn" data-magnetic data-id="whey"
                         data-name="Whey Isolate PRO-X" data-price="2499" data-protein="25">
-                        <span>Add to Stack</span>
-                        <div class="btn-glow"></div>
+                        <span class="cart-btn__text">Add to Stack</span>
+                        <span class="cart-btn__icon">+</span>
+                        <div class="cart-btn__fill"></div>
                     </button>
                 </div>
             </div>
@@ -170,49 +269,89 @@
     </section>
 
     <!-- Product 2: Mass Gainer -->
-    <section class="product-scene" id="product-mass" data-product="mass" data-color="#00f0ff">
+    <section class="product-scene" id="product-mass" data-product="mass" data-accent="#00f0ff">
         <div class="product-scene__bg"></div>
+        <div class="product-scene__noise"></div>
         <div class="product-scene__container">
             <div class="product-scene__visual">
                 <div class="product-scene__glow"></div>
+                <div class="product-scene__ring"></div>
                 <div class="product-scene__image-wrap">
                     <img src="https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?w=800&q=80" alt="Mass Gainer"
-                        class="product-scene__image" />
+                        class="product-scene__image" loading="lazy" />
+                    <div class="product-scene__image-overlay"></div>
                 </div>
-                <div class="product-scene__particles"></div>
+                <div class="product-scene__float-tag">HEAVY HITTER</div>
             </div>
             <div class="product-scene__info">
                 <span class="product-scene__number">02</span>
+                <div class="product-scene__category">MASS</div>
                 <h3 class="product-scene__name">MASS GAINER<br><span class="accent">TITAN</span></h3>
                 <p class="product-scene__description">High-calorie mass builder with 50g protein and complex carbs.
                     Engineered for serious size and strength gains.</p>
                 <div class="product-scene__stats">
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="100, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">50g</span>
                         <span class="stat-card__label">Protein</span>
                     </div>
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="100, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">250g</span>
                         <span class="stat-card__label">Carbs</span>
                     </div>
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="100, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">1250</span>
                         <span class="stat-card__label">Calories</span>
                     </div>
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="60, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">12g</span>
                         <span class="stat-card__label">BCAAs</span>
                     </div>
                 </div>
                 <div class="product-scene__footer">
                     <div class="product-scene__price">
-                        <span class="price-currency">₹</span>
-                        <span class="price-value" data-price="3499">0</span>
+                        <span class="price-label">PRICE</span>
+                        <div class="price-amount">
+                            <span class="price-currency">₹</span>
+                            <span class="price-value" data-price="3499">0</span>
+                        </div>
                     </div>
                     <button class="product-scene__cart-btn magnetic-btn" data-magnetic data-id="mass"
                         data-name="Mass Gainer TITAN" data-price="3499" data-protein="50">
-                        <span>Add to Stack</span>
-                        <div class="btn-glow"></div>
+                        <span class="cart-btn__text">Add to Stack</span>
+                        <span class="cart-btn__icon">+</span>
+                        <div class="cart-btn__fill"></div>
                     </button>
                 </div>
             </div>
@@ -220,49 +359,89 @@
     </section>
 
     <!-- Product 3: Creatine -->
-    <section class="product-scene" id="product-creatine" data-product="creatine" data-color="#a855f7">
+    <section class="product-scene" id="product-creatine" data-product="creatine" data-accent="#a855f7">
         <div class="product-scene__bg"></div>
+        <div class="product-scene__noise"></div>
         <div class="product-scene__container">
             <div class="product-scene__visual">
                 <div class="product-scene__glow"></div>
+                <div class="product-scene__ring"></div>
                 <div class="product-scene__image-wrap">
                     <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=800&q=80"
-                        alt="Creatine Monohydrate" class="product-scene__image" />
+                        alt="Creatine Monohydrate" class="product-scene__image" loading="lazy" />
+                    <div class="product-scene__image-overlay"></div>
                 </div>
-                <div class="product-scene__particles"></div>
+                <div class="product-scene__float-tag">PURE POWER</div>
             </div>
             <div class="product-scene__info">
                 <span class="product-scene__number">03</span>
+                <div class="product-scene__category">POWER</div>
                 <h3 class="product-scene__name">CREATINE<br><span class="accent">MONO-X</span></h3>
                 <p class="product-scene__description">Micronized creatine monohydrate for explosive power. 5g per
                     serving. Lab-tested purity guaranteed.</p>
                 <div class="product-scene__stats">
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="50, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">5g</span>
                         <span class="stat-card__label">Creatine</span>
                     </div>
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="0, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">0g</span>
                         <span class="stat-card__label">Sugar</span>
                     </div>
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="0, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">0</span>
                         <span class="stat-card__label">Calories</span>
                     </div>
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="99, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">99.9%</span>
                         <span class="stat-card__label">Purity</span>
                     </div>
                 </div>
                 <div class="product-scene__footer">
                     <div class="product-scene__price">
-                        <span class="price-currency">₹</span>
-                        <span class="price-value" data-price="1299">0</span>
+                        <span class="price-label">PRICE</span>
+                        <div class="price-amount">
+                            <span class="price-currency">₹</span>
+                            <span class="price-value" data-price="1299">0</span>
+                        </div>
                     </div>
                     <button class="product-scene__cart-btn magnetic-btn" data-magnetic data-id="creatine"
                         data-name="Creatine MONO-X" data-price="1299" data-protein="0">
-                        <span>Add to Stack</span>
-                        <div class="btn-glow"></div>
+                        <span class="cart-btn__text">Add to Stack</span>
+                        <span class="cart-btn__icon">+</span>
+                        <div class="cart-btn__fill"></div>
                     </button>
                 </div>
             </div>
@@ -270,49 +449,89 @@
     </section>
 
     <!-- Product 4: Pre-Workout -->
-    <section class="product-scene" id="product-preworkout" data-product="preworkout" data-color="#ff6b35">
+    <section class="product-scene" id="product-preworkout" data-product="preworkout" data-accent="#ff6b35">
         <div class="product-scene__bg"></div>
+        <div class="product-scene__noise"></div>
         <div class="product-scene__container">
             <div class="product-scene__visual">
                 <div class="product-scene__glow"></div>
+                <div class="product-scene__ring"></div>
                 <div class="product-scene__image-wrap">
                     <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80" alt="Pre-Workout"
-                        class="product-scene__image" />
+                        class="product-scene__image" loading="lazy" />
+                    <div class="product-scene__image-overlay"></div>
                 </div>
-                <div class="product-scene__particles"></div>
+                <div class="product-scene__float-tag">BEAST MODE</div>
             </div>
             <div class="product-scene__info">
                 <span class="product-scene__number">04</span>
+                <div class="product-scene__category">ENERGY</div>
                 <h3 class="product-scene__name">PRE-WORKOUT<br><span class="accent">IGNITE</span></h3>
                 <p class="product-scene__description">Explosive energy formula with beta-alanine, caffeine, and
                     citrulline malate. Unlock beast mode every session.</p>
                 <div class="product-scene__stats">
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="100, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">300mg</span>
                         <span class="stat-card__label">Caffeine</span>
                     </div>
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="64, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">3.2g</span>
                         <span class="stat-card__label">Beta-Alanine</span>
                     </div>
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="75, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">6g</span>
                         <span class="stat-card__label">Citrulline</span>
                     </div>
                     <div class="stat-card">
+                        <div class="stat-card__ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="2" />
+                                <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--accent)" stroke-width="2"
+                                    stroke-dasharray="100, 100" stroke-linecap="round" transform="rotate(-90 18 18)" />
+                            </svg>
+                        </div>
                         <span class="stat-card__value">∞</span>
                         <span class="stat-card__label">Energy</span>
                     </div>
                 </div>
                 <div class="product-scene__footer">
                     <div class="product-scene__price">
-                        <span class="price-currency">₹</span>
-                        <span class="price-value" data-price="1999">0</span>
+                        <span class="price-label">PRICE</span>
+                        <div class="price-amount">
+                            <span class="price-currency">₹</span>
+                            <span class="price-value" data-price="1999">0</span>
+                        </div>
                     </div>
                     <button class="product-scene__cart-btn magnetic-btn" data-magnetic data-id="preworkout"
                         data-name="Pre-Workout IGNITE" data-price="1999" data-protein="0">
-                        <span>Add to Stack</span>
-                        <div class="btn-glow"></div>
+                        <span class="cart-btn__text">Add to Stack</span>
+                        <span class="cart-btn__icon">+</span>
+                        <div class="cart-btn__fill"></div>
                     </button>
                 </div>
             </div>
@@ -320,97 +539,133 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════ -->
+    <!-- MARQUEE 2 -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="marquee marquee--reverse">
+        <div class="marquee__track">
+            <span>BUILD YOUR STACK</span><span class="marquee__dot">◆</span>
+            <span>ENGINEER POWER</span><span class="marquee__dot">◆</span>
+            <span>FORGE STRENGTH</span><span class="marquee__dot">◆</span>
+            <span>ZERO LIMITS</span><span class="marquee__dot">◆</span>
+            <span>MAX RESULTS</span><span class="marquee__dot">◆</span>
+            <span>BUILD YOUR STACK</span><span class="marquee__dot">◆</span>
+            <span>ENGINEER POWER</span><span class="marquee__dot">◆</span>
+            <span>FORGE STRENGTH</span><span class="marquee__dot">◆</span>
+            <span>ZERO LIMITS</span><span class="marquee__dot">◆</span>
+            <span>MAX RESULTS</span><span class="marquee__dot">◆</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
     <!-- SECTION 3: BUILD YOUR STACK -->
     <!-- ═══════════════════════════════════════════════ -->
     <section id="stack" class="stack-section">
+        <div class="stack-section__bg-glow"></div>
         <div class="stack-section__header">
-            <span class="section-label">INTERACTIVE LAB</span>
-            <h2 class="section-title" data-split>Build Your<br><span class="accent">Stack</span></h2>
+            <span class="section-label"><span class="section-label__line"></span>INTERACTIVE LAB</span>
+            <h2 class="section-title">Build Your<br><span class="accent">Stack</span></h2>
             <p class="section-desc">Select your supplements. Watch them power up your tray. Start your transformation.
             </p>
         </div>
 
         <div class="stack-section__grid">
-            <!-- Stack Item Cards -->
             <div class="stack-card" data-stack-id="whey" data-stack-name="Whey Isolate PRO-X" data-stack-price="2499"
                 data-stack-protein="25" data-stack-icon="🥛">
-                <div class="stack-card__glow"></div>
-                <div class="stack-card__icon">🥛</div>
-                <h4 class="stack-card__name">Whey Isolate</h4>
-                <span class="stack-card__protein">+25g protein</span>
-                <span class="stack-card__price">₹2,499</span>
-                <div class="stack-card__check">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
+                <div class="stack-card__gradient-border"></div>
+                <div class="stack-card__inner">
+                    <div class="stack-card__icon">🥛</div>
+                    <h4 class="stack-card__name">Whey Isolate</h4>
+                    <span class="stack-card__protein">+25g protein</span>
+                    <span class="stack-card__price">₹2,499</span>
+                    <div class="stack-card__check">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
                 </div>
             </div>
 
             <div class="stack-card" data-stack-id="mass" data-stack-name="Mass Gainer TITAN" data-stack-price="3499"
                 data-stack-protein="50" data-stack-icon="💪">
-                <div class="stack-card__glow"></div>
-                <div class="stack-card__icon">💪</div>
-                <h4 class="stack-card__name">Mass Gainer</h4>
-                <span class="stack-card__protein">+50g protein</span>
-                <span class="stack-card__price">₹3,499</span>
-                <div class="stack-card__check">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
+                <div class="stack-card__gradient-border"></div>
+                <div class="stack-card__inner">
+                    <div class="stack-card__icon">💪</div>
+                    <h4 class="stack-card__name">Mass Gainer</h4>
+                    <span class="stack-card__protein">+50g protein</span>
+                    <span class="stack-card__price">₹3,499</span>
+                    <div class="stack-card__check">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
                 </div>
             </div>
 
             <div class="stack-card" data-stack-id="creatine" data-stack-name="Creatine MONO-X" data-stack-price="1299"
                 data-stack-protein="0" data-stack-icon="⚡">
-                <div class="stack-card__glow"></div>
-                <div class="stack-card__icon">⚡</div>
-                <h4 class="stack-card__name">Creatine</h4>
-                <span class="stack-card__protein">+5g creatine</span>
-                <span class="stack-card__price">₹1,299</span>
-                <div class="stack-card__check">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
+                <div class="stack-card__gradient-border"></div>
+                <div class="stack-card__inner">
+                    <div class="stack-card__icon">⚡</div>
+                    <h4 class="stack-card__name">Creatine</h4>
+                    <span class="stack-card__protein">+5g creatine</span>
+                    <span class="stack-card__price">₹1,299</span>
+                    <div class="stack-card__check">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
                 </div>
             </div>
 
             <div class="stack-card" data-stack-id="preworkout" data-stack-name="Pre-Workout IGNITE"
                 data-stack-price="1999" data-stack-protein="0" data-stack-icon="🔥">
-                <div class="stack-card__glow"></div>
-                <div class="stack-card__icon">🔥</div>
-                <h4 class="stack-card__name">Pre-Workout</h4>
-                <span class="stack-card__protein">+300mg caffeine</span>
-                <span class="stack-card__price">₹1,999</span>
-                <div class="stack-card__check">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
+                <div class="stack-card__gradient-border"></div>
+                <div class="stack-card__inner">
+                    <div class="stack-card__icon">🔥</div>
+                    <h4 class="stack-card__name">Pre-Workout</h4>
+                    <span class="stack-card__protein">+300mg caffeine</span>
+                    <span class="stack-card__price">₹1,999</span>
+                    <div class="stack-card__check">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Stack Tray -->
         <div class="stack-tray" id="stack-tray">
-            <div class="stack-tray__header">
-                <h3 class="stack-tray__title">YOUR POWER TRAY</h3>
-                <div class="stack-tray__items" id="stack-tray-items">
-                    <!-- Dynamically filled -->
+            <div class="stack-tray__gradient-border"></div>
+            <div class="stack-tray__inner">
+                <div class="stack-tray__header">
+                    <h3 class="stack-tray__title">⚡ YOUR POWER TRAY</h3>
+                    <div class="stack-tray__items" id="stack-tray-items"></div>
                 </div>
+                <div class="stack-tray__totals">
+                    <div class="stack-tray__total-item">
+                        <span class="stack-tray__total-label">Total Protein</span>
+                        <span class="stack-tray__total-value"><span id="total-protein">0</span>g / serving</span>
+                    </div>
+                    <div class="stack-tray__total-item">
+                        <span class="stack-tray__total-label">Stack Price</span>
+                        <span class="stack-tray__total-value">₹<span id="total-price">0</span></span>
+                    </div>
+                    <div class="stack-tray__total-item">
+                        <span class="stack-tray__total-label">Items</span>
+                        <span class="stack-tray__total-value"><span id="total-items">0</span> selected</span>
+                    </div>
+                </div>
+                <button class="stack-tray__cta magnetic-btn" id="start-transform-btn" data-magnetic disabled>
+                    <span class="stack-tray__cta-text">Start Transformation</span>
+                    <span class="stack-tray__cta-arrow">→</span>
+                    <div class="stack-tray__cta-bg"></div>
+                </button>
             </div>
-            <div class="stack-tray__totals">
-                <div class="stack-tray__total-item">
-                    <span class="stack-tray__total-label">Total Protein</span>
-                    <span class="stack-tray__total-value"><span id="total-protein">0</span>g / serving</span>
-                </div>
-                <div class="stack-tray__total-item">
-                    <span class="stack-tray__total-label">Stack Price</span>
-                    <span class="stack-tray__total-value">₹<span id="total-price">0</span></span>
-                </div>
-            </div>
-            <button class="stack-tray__cta magnetic-btn" id="start-transform-btn" data-magnetic disabled>
-                <span>Start Transformation</span>
-                <div class="btn-glow"></div>
-            </button>
         </div>
     </section>
 
@@ -419,8 +674,8 @@
     <!-- ═══════════════════════════════════════════════ -->
     <section id="transform" class="transform-section">
         <div class="transform-section__header">
-            <span class="section-label">RESULTS</span>
-            <h2 class="section-title" data-split>Real<br><span class="accent">Transformations</span></h2>
+            <span class="section-label"><span class="section-label__line"></span>RESULTS</span>
+            <h2 class="section-title">Real<br><span class="accent">Transformations</span></h2>
         </div>
 
         <div class="transform-slider">
@@ -428,18 +683,18 @@
                 <div class="transform-slider__before">
                     <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80"
                         alt="Before transformation" />
-                    <span class="transform-slider__label">BEFORE</span>
+                    <span class="transform-slider__label">DAY 1</span>
                 </div>
                 <div class="transform-slider__after">
                     <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&q=80"
                         alt="After transformation" />
-                    <span class="transform-slider__label">AFTER</span>
+                    <span class="transform-slider__label">WEEK 12</span>
                 </div>
                 <div class="transform-slider__handle" id="ba-handle">
                     <div class="transform-slider__handle-line"></div>
                     <div class="transform-slider__handle-circle">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
                             <path d="M18 8l-6-6-6 6M18 16l-6 6-6-6" />
                         </svg>
                     </div>
@@ -448,9 +703,25 @@
             </div>
         </div>
 
+        <div class="transform-stats">
+            <div class="transform-stat">
+                <span class="transform-stat__value">+12kg</span>
+                <span class="transform-stat__label">Lean Muscle</span>
+            </div>
+            <div class="transform-stat">
+                <span class="transform-stat__value">-8%</span>
+                <span class="transform-stat__label">Body Fat</span>
+            </div>
+            <div class="transform-stat">
+                <span class="transform-stat__value">2x</span>
+                <span class="transform-stat__label">Strength</span>
+            </div>
+        </div>
+
         <div class="transform-quote">
-            <blockquote class="transform-quote__text" data-split>
-                "12 weeks. Same mirror. Different human. FORGE didn't just change my body — it rewired my discipline."
+            <blockquote class="transform-quote__text">
+                "12 weeks. Same mirror. Different human.<br>FORGE didn't just change my body — it rewired my
+                discipline."
             </blockquote>
             <cite class="transform-quote__author">— ARJUN K., FORGE ATHLETE</cite>
         </div>
@@ -460,27 +731,36 @@
     <!-- SECTION 5: FINAL CTA EXPLOSION -->
     <!-- ═══════════════════════════════════════════════ -->
     <section id="final-cta" class="final-section">
-        <div class="final-section__particles" id="final-particles"></div>
+        <canvas id="final-canvas"></canvas>
+        <div class="final-section__radial"></div>
 
         <div class="final-section__product-grid" id="final-grid">
-            <div class="final-product" data-delay="0">🥛</div>
-            <div class="final-product" data-delay="0.1">💪</div>
-            <div class="final-product" data-delay="0.2">⚡</div>
-            <div class="final-product" data-delay="0.3">🔥</div>
+            <div class="final-product" data-delay="0"><span>🥛</span><small>Whey</small></div>
+            <div class="final-product" data-delay="0.1"><span>💪</span><small>Mass</small></div>
+            <div class="final-product" data-delay="0.2"><span>⚡</span><small>Creatine</small></div>
+            <div class="final-product" data-delay="0.3"><span>🔥</span><small>Pre-Workout</small></div>
         </div>
 
         <div class="final-section__content">
-            <h2 class="final-section__title" data-split>
-                <span>YOUR STRONGEST SELF</span>
-                <span class="accent">STARTS TODAY</span>
+            <h2 class="final-section__title">
+                <div class="final-title-wrap"><span>YOUR STRONGEST SELF</span></div>
+                <div class="final-title-wrap"><span class="accent">STARTS TODAY</span></div>
             </h2>
             <p class="final-section__subtitle">Join 50,000+ athletes who chose to stop wishing and start forging.</p>
             <a href="#stack" class="final-section__btn magnetic-btn" data-magnetic>
-                <span>BEGIN YOUR JOURNEY</span>
-                <div class="btn-glow"></div>
-                <div class="btn-pulse"></div>
+                <span class="final-btn__text">BEGIN YOUR JOURNEY</span>
+                <span class="final-btn__arrow">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </span>
+                <div class="final-btn__pulse"></div>
+                <div class="final-btn__shine"></div>
             </a>
         </div>
+
+        <div class="final-section__bottom-text">FORGE LABS™ — ENGINEER YOUR STRENGTH</div>
     </section>
 
     <!-- ═══════════════════════════════════════════════ -->
@@ -493,11 +773,12 @@
                 <p class="footer__tagline">Engineer Your Strength™</p>
             </div>
             <div class="footer__links">
-                <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
-                <a href="#">YouTube</a>
+                <a href="#" class="footer__link">Instagram</a>
+                <a href="#" class="footer__link">Twitter</a>
+                <a href="#" class="footer__link">YouTube</a>
+                <a href="#" class="footer__link">Discord</a>
             </div>
-            <p class="footer__copy">© 2026 FORGE Labs. All rights reserved.</p>
+            <p class="footer__copy">© 2026 FORGE Labs. All rights reserved. Built with obsession.</p>
         </div>
     </footer>
 
