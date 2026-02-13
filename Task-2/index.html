@@ -187,7 +187,7 @@
                 <div class="product-scene__glow"></div>
                 <div class="product-scene__ring"></div>
                 <div class="product-scene__image-wrap">
-                    <img src="https://images.unsplash.com/photo-1593095948071-474c5cc2c462?w=800&q=80"
+                    <img src="https://images.unsplash.com/photo-1606854428728-5fe3eea23475?w=600&h=800&fit=crop&q=80"
                         alt="Whey Protein Isolate" class="product-scene__image" loading="lazy" />
                     <div class="product-scene__image-overlay"></div>
                 </div>
@@ -277,8 +277,8 @@
                 <div class="product-scene__glow"></div>
                 <div class="product-scene__ring"></div>
                 <div class="product-scene__image-wrap">
-                    <img src="https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?w=800&q=80" alt="Mass Gainer"
-                        class="product-scene__image" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1619983081563-430f63602796?w=600&h=800&fit=crop&q=80"
+                        alt="Mass Gainer" class="product-scene__image" loading="lazy" />
                     <div class="product-scene__image-overlay"></div>
                 </div>
                 <div class="product-scene__float-tag">HEAVY HITTER</div>
@@ -367,7 +367,7 @@
                 <div class="product-scene__glow"></div>
                 <div class="product-scene__ring"></div>
                 <div class="product-scene__image-wrap">
-                    <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=800&q=80"
+                    <img src="https://images.unsplash.com/photo-1616279969862-40dde1898be3?w=600&h=800&fit=crop&q=80"
                         alt="Creatine Monohydrate" class="product-scene__image" loading="lazy" />
                     <div class="product-scene__image-overlay"></div>
                 </div>
@@ -457,8 +457,8 @@
                 <div class="product-scene__glow"></div>
                 <div class="product-scene__ring"></div>
                 <div class="product-scene__image-wrap">
-                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80" alt="Pre-Workout"
-                        class="product-scene__image" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=800&fit=crop&q=80"
+                        alt="Pre-Workout" class="product-scene__image" loading="lazy" />
                     <div class="product-scene__image-overlay"></div>
                 </div>
                 <div class="product-scene__float-tag">BEAST MODE</div>
@@ -561,6 +561,7 @@
     <!-- ═══════════════════════════════════════════════ -->
     <section id="stack" class="stack-section">
         <div class="stack-section__bg-glow"></div>
+        <div class="stack-section__particles" id="stack-particles"></div>
         <div class="stack-section__header">
             <span class="section-label"><span class="section-label__line"></span>INTERACTIVE LAB</span>
             <h2 class="section-title">Build Your<br><span class="accent">Stack</span></h2>
@@ -568,15 +569,46 @@
             </p>
         </div>
 
+        <!-- Popular Combos -->
+        <div class="stack-combos">
+            <span class="stack-combos__label">🔥 POPULAR COMBOS</span>
+            <div class="stack-combos__buttons">
+                <button class="stack-combo-btn" data-combo="lean" data-combo-ids="whey,creatine">
+                    <span class="stack-combo-btn__icon">🎯</span>
+                    <span class="stack-combo-btn__name">Lean Machine</span>
+                    <span class="stack-combo-btn__save">Save 15%</span>
+                </button>
+                <button class="stack-combo-btn" data-combo="bulk" data-combo-ids="whey,mass,creatine">
+                    <span class="stack-combo-btn__icon">🏋️</span>
+                    <span class="stack-combo-btn__name">Bulk Beast</span>
+                    <span class="stack-combo-btn__save">Save 20%</span>
+                </button>
+                <button class="stack-combo-btn" data-combo="all" data-combo-ids="whey,mass,creatine,preworkout">
+                    <span class="stack-combo-btn__icon">👑</span>
+                    <span class="stack-combo-btn__name">God Mode</span>
+                    <span class="stack-combo-btn__save">Save 25%</span>
+                </button>
+            </div>
+        </div>
+
         <div class="stack-section__grid">
+            <!-- Whey Card -->
             <div class="stack-card" data-stack-id="whey" data-stack-name="Whey Isolate PRO-X" data-stack-price="2499"
                 data-stack-protein="25" data-stack-icon="🥛">
                 <div class="stack-card__gradient-border"></div>
                 <div class="stack-card__inner">
-                    <div class="stack-card__icon">🥛</div>
-                    <h4 class="stack-card__name">Whey Isolate</h4>
-                    <span class="stack-card__protein">+25g protein</span>
-                    <span class="stack-card__price">₹2,499</span>
+                    <div class="stack-card__img-wrap">
+                        <img src="https://images.unsplash.com/photo-1606854428728-5fe3eea23475?w=300&h=200&fit=crop&q=80"
+                            alt="Whey Isolate" class="stack-card__img" loading="lazy" />
+                        <div class="stack-card__img-glow" style="--card-accent:#39ff14"></div>
+                    </div>
+                    <div class="stack-card__badge">BEST SELLER</div>
+                    <h4 class="stack-card__name">Whey Isolate PRO-X</h4>
+                    <span class="stack-card__protein">+25g protein / serving</span>
+                    <div class="stack-card__bottom">
+                        <span class="stack-card__price">₹2,499</span>
+                        <span class="stack-card__add-label">TAP TO ADD</span>
+                    </div>
                     <div class="stack-card__check">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="3">
@@ -586,14 +618,23 @@
                 </div>
             </div>
 
+            <!-- Mass Gainer Card -->
             <div class="stack-card" data-stack-id="mass" data-stack-name="Mass Gainer TITAN" data-stack-price="3499"
                 data-stack-protein="50" data-stack-icon="💪">
                 <div class="stack-card__gradient-border"></div>
                 <div class="stack-card__inner">
-                    <div class="stack-card__icon">💪</div>
-                    <h4 class="stack-card__name">Mass Gainer</h4>
-                    <span class="stack-card__protein">+50g protein</span>
-                    <span class="stack-card__price">₹3,499</span>
+                    <div class="stack-card__img-wrap">
+                        <img src="https://images.unsplash.com/photo-1619983081563-430f63602796?w=300&h=200&fit=crop&q=80"
+                            alt="Mass Gainer" class="stack-card__img" loading="lazy" />
+                        <div class="stack-card__img-glow" style="--card-accent:#00f0ff"></div>
+                    </div>
+                    <div class="stack-card__badge" style="background:var(--cyan)">HEAVY HITTER</div>
+                    <h4 class="stack-card__name">Mass Gainer TITAN</h4>
+                    <span class="stack-card__protein">+50g protein / serving</span>
+                    <div class="stack-card__bottom">
+                        <span class="stack-card__price">₹3,499</span>
+                        <span class="stack-card__add-label">TAP TO ADD</span>
+                    </div>
                     <div class="stack-card__check">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="3">
@@ -603,14 +644,23 @@
                 </div>
             </div>
 
+            <!-- Creatine Card -->
             <div class="stack-card" data-stack-id="creatine" data-stack-name="Creatine MONO-X" data-stack-price="1299"
                 data-stack-protein="0" data-stack-icon="⚡">
                 <div class="stack-card__gradient-border"></div>
                 <div class="stack-card__inner">
-                    <div class="stack-card__icon">⚡</div>
-                    <h4 class="stack-card__name">Creatine</h4>
-                    <span class="stack-card__protein">+5g creatine</span>
-                    <span class="stack-card__price">₹1,299</span>
+                    <div class="stack-card__img-wrap">
+                        <img src="https://images.unsplash.com/photo-1616279969862-40dde1898be3?w=300&h=200&fit=crop&q=80"
+                            alt="Creatine" class="stack-card__img" loading="lazy" />
+                        <div class="stack-card__img-glow" style="--card-accent:#a855f7"></div>
+                    </div>
+                    <div class="stack-card__badge" style="background:var(--purple)">PURE POWER</div>
+                    <h4 class="stack-card__name">Creatine MONO-X</h4>
+                    <span class="stack-card__protein">+5g creatine / serving</span>
+                    <div class="stack-card__bottom">
+                        <span class="stack-card__price">₹1,299</span>
+                        <span class="stack-card__add-label">TAP TO ADD</span>
+                    </div>
                     <div class="stack-card__check">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="3">
@@ -620,14 +670,23 @@
                 </div>
             </div>
 
+            <!-- Pre-Workout Card -->
             <div class="stack-card" data-stack-id="preworkout" data-stack-name="Pre-Workout IGNITE"
                 data-stack-price="1999" data-stack-protein="0" data-stack-icon="🔥">
                 <div class="stack-card__gradient-border"></div>
                 <div class="stack-card__inner">
-                    <div class="stack-card__icon">🔥</div>
-                    <h4 class="stack-card__name">Pre-Workout</h4>
-                    <span class="stack-card__protein">+300mg caffeine</span>
-                    <span class="stack-card__price">₹1,999</span>
+                    <div class="stack-card__img-wrap">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300&h=200&fit=crop&q=80"
+                            alt="Pre-Workout" class="stack-card__img" loading="lazy" />
+                        <div class="stack-card__img-glow" style="--card-accent:#ff6b35"></div>
+                    </div>
+                    <div class="stack-card__badge" style="background:var(--orange)">BEAST MODE</div>
+                    <h4 class="stack-card__name">Pre-Workout IGNITE</h4>
+                    <span class="stack-card__protein">+300mg caffeine / serving</span>
+                    <div class="stack-card__bottom">
+                        <span class="stack-card__price">₹1,999</span>
+                        <span class="stack-card__add-label">TAP TO ADD</span>
+                    </div>
                     <div class="stack-card__check">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="3">
@@ -681,12 +740,12 @@
         <div class="transform-slider">
             <div class="transform-slider__container" id="ba-slider">
                 <div class="transform-slider__before">
-                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80"
+                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&h=500&fit=crop&q=80"
                         alt="Before transformation" />
                     <span class="transform-slider__label">DAY 1</span>
                 </div>
                 <div class="transform-slider__after">
-                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&q=80"
+                    <img src="https://images.unsplash.com/photo-1605296867424-35fc25c9212a?w=800&h=500&fit=crop&q=80"
                         alt="After transformation" />
                     <span class="transform-slider__label">WEEK 12</span>
                 </div>

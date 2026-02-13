@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA — Premium Wireless Headphones</title>
+    <meta name="description" content="AURA — A cinematic experience for premium wireless headphones. Hear the future.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════
+         LOADING SCREEN
+         ═══════════════════════════════════════════ -->
+    <div id="loader">
+        <div class="loader__inner">
+            <div class="loader__brand">AURA</div>
+            <div class="loader__bar-track">
+                <div class="loader__bar-fill" id="loaderFill"></div>
+            </div>
+            <div class="loader__percent" id="loaderPercent">0%</div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         WEBGL CANVAS (pinned behind everything)
+         ═══════════════════════════════════════════ -->
+    <canvas id="webgl"></canvas>
+
+    <!-- ═══════════════════════════════════════════
+         VIGNETTE OVERLAY
+         ═══════════════════════════════════════════ -->
+    <div class="vignette"></div>
+
+    <!-- ═══════════════════════════════════════════
+         NAVIGATION
+         ═══════════════════════════════════════════ -->
+    <nav class="nav" id="nav">
+        <span class="nav__logo">AURA</span>
+        <span class="nav__tagline">Sound Redefined</span>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════
+         SCROLL SECTIONS (each 100vh)
+         ═══════════════════════════════════════════ -->
+    <main id="scroll-container">
+
+        <!-- SCENE 1 — VOID -->
+        <section class="scene" id="scene-1" data-scene="1">
+            <div class="scene__content scene__content--center">
+                <p class="scene__whisper" id="whisper-1">listen</p>
+            </div>
+        </section>
+
+        <!-- SCENE 2 — ENERGY AWAKENING -->
+        <section class="scene" id="scene-2" data-scene="2">
+            <div class="scene__content scene__content--right">
+                <h2 class="scene__subtitle" id="subtitle-2">SOUND</h2>
+                <h2 class="scene__subtitle scene__subtitle--accent" id="subtitle-2b">AWAKENS</h2>
+            </div>
+        </section>
+
+        <!-- SCENE 3 — STRUCTURAL DECONSTRUCTION -->
+        <section class="scene" id="scene-3" data-scene="3">
+            <div class="scene__content scene__content--left">
+                <h1 class="scene__title-massive" id="title-3">ENGINEERED</h1>
+                <h1 class="scene__title-massive scene__title-massive--outline" id="title-3b">SILENCE</h1>
+            </div>
+        </section>
+
+        <!-- SCENE 4 — TYPOGRAPHY FROM DEPTH -->
+        <section class="scene" id="scene-4" data-scene="4">
+            <div class="scene__content scene__content--center">
+                <h1 class="scene__depth-text" id="depth-text">PRECISION</h1>
+                <p class="scene__depth-sub" id="depth-sub">Every component, a masterpiece.</p>
+            </div>
+        </section>
+
+        <!-- SCENE 5 — PERFECT REASSEMBLY -->
+        <section class="scene" id="scene-5" data-scene="5">
+            <div class="scene__content scene__content--center">
+                <p class="scene__reveal-line" id="reveal-line">Perfection, reassembled.</p>
+            </div>
+        </section>
+
+        <!-- SCENE 6 — LUXURY ROTATION / SPECS -->
+        <section class="scene" id="scene-6" data-scene="6">
+            <div class="scene__content scene__content--specs">
+                <div class="spec" id="spec-1">
+                    <span class="spec__value">40h</span>
+                    <span class="spec__label">Battery Life</span>
+                </div>
+                <div class="spec" id="spec-2">
+                    <span class="spec__value">-35dB</span>
+                    <span class="spec__label">Active Noise Cancelling</span>
+                </div>
+                <div class="spec" id="spec-3">
+                    <span class="spec__value">Hi-Res</span>
+                    <span class="spec__label">LDAC Audio</span>
+                </div>
+                <div class="spec" id="spec-4">
+                    <span class="spec__value">254g</span>
+                    <span class="spec__label">Ultralight Design</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENE 7 — FINAL EMOTIONAL STRIKE -->
+        <section class="scene" id="scene-7" data-scene="7">
+            <div class="scene__content scene__content--center">
+                <h1 class="scene__final" id="final-text">HEAR THE FUTURE.</h1>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════
+         SCROLL INDICATOR
+         ═══════════════════════════════════════════ -->
+    <div class="scroll-indicator" id="scrollIndicator">
+        <div class="scroll-indicator__line"></div>
+        <span class="scroll-indicator__text">SCROLL</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         SCRIPTS
+         ═══════════════════════════════════════════ -->
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js"></script>
+    <!-- Three.js Add-ons (ES Module shim) -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- App Modules -->
+    <script type="module" src="main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,453 @@
+/* ════════════════════════════════════════════════════════
+   AURA — Cinematic 3D Headphone Experience
+   Design System & Layout
+   ════════════════════════════════════════════════════════ */
+
+/* ─── RESET ──────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: auto;
+    /* GSAP handles scroll */
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background: #000;
+    color: #f0ede8;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ─── CUSTOM PROPERTIES ──────────────────────────────── */
+:root {
+    --color-bg: #000000;
+    --color-text: #f0ede8;
+    --color-text-dim: rgba(240, 237, 232, 0.35);
+    --color-accent: #4a9eff;
+    --color-accent-warm: #ff6b35;
+    --color-glow: rgba(74, 158, 255, 0.15);
+
+    --font-display: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ════════════════════════════════════════════════════════
+   LOADING SCREEN
+   ════════════════════════════════════════════════════════ */
+#loader {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s var(--ease-cinematic), visibility 0.8s;
+}
+
+#loader.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader__inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.loader__brand {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 200;
+    letter-spacing: 1.2em;
+    text-indent: 1.2em;
+    color: var(--color-text);
+    opacity: 0.9;
+}
+
+.loader__bar-track {
+    width: 200px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.loader__bar-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--color-text);
+    transition: width 0.3s var(--ease-smooth);
+}
+
+.loader__percent {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--color-text-dim);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ════════════════════════════════════════════════════════
+   WEBGL CANVAS
+   ════════════════════════════════════════════════════════ */
+#webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ════════════════════════════════════════════════════════
+   VIGNETTE OVERLAY
+   ════════════════════════════════════════════════════════ */
+.vignette {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: radial-gradient(ellipse 80% 80% at center,
+            transparent 40%,
+            rgba(0, 0, 0, 0.6) 100%);
+}
+
+/* ════════════════════════════════════════════════════════
+   NAVIGATION
+   ════════════════════════════════════════════════════════ */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+    opacity: 0;
+    transition: opacity 0.6s var(--ease-smooth);
+}
+
+.nav.visible {
+    opacity: 1;
+}
+
+.nav__logo {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 0.6em;
+    color: var(--color-text);
+}
+
+.nav__tagline {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+}
+
+/* ════════════════════════════════════════════════════════
+   SCROLL SECTIONS
+   ════════════════════════════════════════════════════════ */
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+.scene__content {
+    position: relative;
+    width: 100%;
+    padding: 0 6vw;
+}
+
+.scene__content--center {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.scene__content--left {
+    text-align: left;
+}
+
+.scene__content--right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.scene__content--specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem 8rem;
+    max-width: 600px;
+    margin-left: auto;
+    padding-right: 8vw;
+}
+
+/* ─── TYPOGRAPHY STYLES ──────────────────────────────── */
+
+/* Scene 1 — whisper */
+.scene__whisper {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 200;
+    letter-spacing: 1em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    opacity: 0;
+}
+
+/* Scene 2 — subtitles */
+.scene__subtitle {
+    font-family: var(--font-display);
+    font-size: 6vw;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    line-height: 1.05;
+    color: var(--color-text);
+    opacity: 0;
+}
+
+.scene__subtitle--accent {
+    color: var(--color-accent);
+    font-weight: 200;
+}
+
+/* Scene 3 — massive title */
+.scene__title-massive {
+    font-family: var(--font-display);
+    font-size: 10vw;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    line-height: 0.95;
+    color: var(--color-text);
+    opacity: 0;
+    text-transform: uppercase;
+}
+
+.scene__title-massive--outline {
+    -webkit-text-stroke: 1px var(--color-text);
+    color: transparent;
+}
+
+/* Scene 4 — depth text */
+.scene__depth-text {
+    font-family: var(--font-display);
+    font-size: 14vw;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    color: var(--color-text);
+    opacity: 0;
+    text-transform: uppercase;
+    mix-blend-mode: difference;
+}
+
+.scene__depth-sub {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    margin-top: 2rem;
+    color: var(--color-text-dim);
+    opacity: 0;
+}
+
+/* Scene 5 — reveal line */
+.scene__reveal-line {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 200;
+    letter-spacing: 0.15em;
+    color: var(--color-text);
+    opacity: 0;
+}
+
+/* Scene 6 — specs */
+.spec {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    opacity: 0;
+}
+
+.spec__value {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+}
+
+.spec__label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+}
+
+/* Scene 7 — final */
+.scene__final {
+    font-family: var(--font-display);
+    font-size: 5vw;
+    font-weight: 300;
+    letter-spacing: 0.35em;
+    color: var(--color-text);
+    opacity: 0;
+    text-transform: uppercase;
+}
+
+/* ════════════════════════════════════════════════════════
+   SCROLL INDICATOR
+   ════════════════════════════════════════════════════════ */
+.scroll-indicator {
+    position: fixed;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    opacity: 0;
+    transition: opacity 0.6s var(--ease-smooth);
+}
+
+.scroll-indicator.visible {
+    opacity: 1;
+}
+
+.scroll-indicator__line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--color-text-dim), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.scroll-indicator__text {
+    font-family: var(--font-body);
+    font-size: 0.55rem;
+    font-weight: 400;
+    letter-spacing: 0.4em;
+    color: var(--color-text-dim);
+}
+
+@keyframes scrollPulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scaleY(0.6);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+/* ════════════════════════════════════════════════════════
+   REFLECTIVE FLOOR (CSS overlay)
+   ════════════════════════════════════════════════════════ */
+.floor-reflection {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30vh;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(to top,
+            rgba(74, 158, 255, 0.02) 0%,
+            transparent 100%);
+    opacity: 0;
+    transition: opacity 1s var(--ease-smooth);
+}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .nav {
+        padding: 1.5rem 2rem;
+    }
+
+    .scene__content {
+        padding: 0 4vw;
+    }
+
+    .scene__content--specs {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding-right: 4vw;
+    }
+
+    .scene__title-massive {
+        font-size: 14vw;
+    }
+
+    .scene__depth-text {
+        font-size: 18vw;
+    }
+
+    .scene__subtitle {
+        font-size: 10vw;
+    }
+
+    .scene__final {
+        font-size: 7vw;
+    }
+
+    .loader__brand {
+        font-size: 2rem;
+    }
+}
+
+/* ════════════════════════════════════════════════════════
+   UTILITY
+   ════════════════════════════════════════════════════════ */
+::selection {
+    background: var(--color-accent);
+    color: #000;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    display: none;
+}
