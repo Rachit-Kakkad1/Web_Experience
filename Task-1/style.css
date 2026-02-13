@@ -8,10 +8,9 @@
 }
 
 :root {
-    --dark: #1c1c2b;
+    --dark: #0e2a28;
     --pink: #e8a0bf;
-    --teal: #1e3a30;
-    --sage: #b5c7b0;
+    --light: #d6d6cd;
     --white: #ffffff;
 }
 
@@ -21,197 +20,204 @@ body {
     height: 100%;
     overflow: hidden;
     font-family: 'Inter', sans-serif;
-    background: #0d0d0d;
+    background: #0a0a0a;
 }
 
-/* ========== CONTAINER ========== */
-.container {
+/* ========== HERO SECTION ========== */
+.hero {
     position: relative;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
 }
 
-/* ========== ALL SECTIONS ========== */
-.section {
+/* ========== BACKGROUND IMAGE ========== */
+.bg-image {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
+    z-index: 0;
+}
+
+.bg-image img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+/* ========== "Projects" LABEL ========== */
+.projects-label {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    z-index: 5;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    opacity: 0.9;
+}
+
+/* ========== PANELS (skewed overlapping shapes) ========== */
+.panel {
+    position: absolute;
     overflow: hidden;
     cursor: pointer;
+    transition: filter 0.5s ease;
 }
 
-/*
-   Diagonal X layout — two lines from corners make 4 triangles:
-   Section 1 = LEFT   triangle
-   Section 2 = TOP    triangle
-   Section 3 = RIGHT  triangle
-   Section 4 = BOTTOM triangle
-*/
-
-.section-1 {
-    clip-path: polygon(0 0, 50% 50%, 0 100%);
-}
-
-.section-2 {
-    clip-path: polygon(0 0, 100% 0, 50% 50%);
-}
-
-.section-3 {
-    clip-path: polygon(100% 0, 100% 100%, 50% 50%);
-}
-
-.section-4 {
-    clip-path: polygon(0 100%, 100% 100%, 50% 50%);
-}
-
-/* ========== BACKGROUNDS ========== */
-.section-bg {
-    position: absolute;
-    inset: 0;
-}
-
-.section-1 .section-bg {
-    background: var(--dark);
-}
-
-.section-2 .section-bg {
+/* -- Pink panel: top-right diagonal slab -- */
+.panel-pink {
+    top: -15%;
+    right: -10%;
+    width: 65%;
+    height: 75%;
     background: var(--pink);
+    clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 80%);
+    z-index: 1;
+    opacity: 0.92;
 }
 
-.section-3 .section-bg {
-    background: var(--sage);
-}
-
-.section-4 .section-bg {
-    background: var(--teal);
-}
-
-/* ========== IMAGES ========== */
-.section-image {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transform: scale(1.1);
+/* -- Dark panel: bottom-left tilted trapezoid -- */
+.panel-dark {
+    bottom: -12%;
+    left: -8%;
+    width: 75%;
+    height: 60%;
+    background: var(--dark);
+    clip-path: polygon(0% 20%, 100% 0%, 90% 100%, 0% 100%);
     z-index: 2;
 }
 
-.section-image img {
+/* -- Light/sage panel: bottom-right -- */
+.panel-light {
+    bottom: -8%;
+    right: -8%;
+    width: 60%;
+    height: 55%;
+    background: var(--light);
+    clip-path: polygon(15% 0%, 100% 10%, 100% 100%, 0% 100%);
+    z-index: 3;
+    opacity: 0.9;
+}
+
+/* ========== PANEL HOVER IMAGES ========== */
+.panel-hover-img {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: 1;
+}
+
+.panel-hover-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* ========== CONTENT / TEXT ========== */
-.section-content {
+/* ========== OVERSIZED SPLIT TYPOGRAPHY ========== */
+.typography-layer {
     position: absolute;
     inset: 0;
-    display: flex;
-    flex-direction: column;
     z-index: 10;
     pointer-events: none;
-}
-
-.big-text {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(6rem, 18vw, 20rem);
-    font-weight: 400;
-    color: var(--white);
-    line-height: 0.82;
-    letter-spacing: 0.02em;
-    text-transform: lowercase;
-    mix-blend-mode: difference;
-}
-
-/* ── Section 1: "Projects" top-left, "de" centered-left ── */
-.section-1 .section-content {
-    justify-content: center;
-    padding-left: 4%;
-}
-
-.section-1 .label {
-    position: absolute;
-    top: 12%;
-    left: 4%;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--white);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    opacity: 0.85;
-}
-
-.section-1 .big-text {
-    margin-left: 2%;
-}
-
-/* ── Section 2: small "d" top-right corner, "lve" center-right ── */
-.section-2 .section-content {
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding-top: 8%;
-    padding-right: 6%;
-}
-
-.section-2 .corner-letter {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2rem, 4vw, 4.5rem);
-    color: var(--white);
-    opacity: 0.55;
-    mix-blend-mode: difference;
-    text-transform: lowercase;
-    position: absolute;
-    top: 6%;
-    right: 6%;
-}
-
-.section-2 .big-text {
-    position: absolute;
-    top: 50%;
-    right: 8%;
-    transform: translateY(-70%);
-}
-
-/* ── Section 3: right triangle — clean ── */
-.section-3 .section-content {
-    align-items: flex-end;
-    justify-content: center;
-    padding-right: 6%;
-}
-
-/* ── Section 4: bottom triangle — clean ── */
-.section-4 .section-content {
+    display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding-bottom: 6%;
+    justify-content: center;
 }
 
-/* ========== HOVER DIMMING ========== */
-.section::after {
-    content: '';
+.text-del,
+.text-ve {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(8rem, 20vw, 22rem);
+    line-height: 0.85;
+    letter-spacing: 0.01em;
+    text-transform: lowercase;
     position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0);
-    transition: background 0.5s ease;
+}
+
+/* "del" sits on the dark panel area — lower-left, white */
+.text-del {
+    color: var(--white);
+    bottom: 18%;
+    left: 5%;
+    z-index: 12;
+    mix-blend-mode: difference;
+}
+
+/* "ve" sits on the light panel area — lower-right, faded */
+.text-ve {
+    color: var(--white);
+    bottom: 18%;
+    left: 38%;
+    z-index: 12;
+    opacity: 0.22;
+    mix-blend-mode: difference;
+}
+
+/* ========== CORNER "d" ========== */
+.corner-d {
+    position: absolute;
+    top: 5%;
+    right: 6%;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    color: var(--white);
+    opacity: 0.45;
     z-index: 5;
+    mix-blend-mode: difference;
+    text-transform: lowercase;
     pointer-events: none;
 }
 
-.section.dimmed::after {
-    background: rgba(0, 0, 0, 0.45);
+/* ========== PANEL DIMMING ON HOVER ========== */
+.panel.dimmed {
+    filter: brightness(0.5);
+}
+
+/* Background dim when panels hovered */
+.bg-image.dimmed img {
+    filter: brightness(0.35);
+    transition: filter 0.5s ease;
 }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
-    .big-text {
-        font-size: clamp(4rem, 14vw, 10rem);
+
+    .text-del,
+    .text-ve {
+        font-size: clamp(5rem, 16vw, 10rem);
     }
 
-    .section-1 .label {
-        top: 8%;
+    .text-del {
+        bottom: 22%;
         left: 3%;
+    }
+
+    .text-ve {
+        bottom: 22%;
+        left: 35%;
+    }
+
+    .panel-pink {
+        width: 70%;
+        height: 65%;
+    }
+
+    .panel-dark {
+        width: 85%;
+        height: 55%;
+    }
+
+    .panel-light {
+        width: 65%;
+        height: 50%;
+    }
+
+    .projects-label {
+        top: 6%;
+        left: 4%;
         font-size: 0.65rem;
     }
 }

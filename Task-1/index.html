@@ -14,55 +14,49 @@
 
 <body>
 
-    <main class="container">
+    <section class="hero">
 
-        <!-- Top-Left Section (Dark) -->
-        <div class="section section-1" data-index="0">
-            <div class="section-bg"></div>
-            <div class="section-image">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80" alt="Architecture">
-            </div>
-            <div class="section-content">
-                <span class="label">Projects</span>
-                <span class="big-text">de</span>
+        <!-- Background Photo Layer -->
+        <div class="bg-image">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80" alt="Building">
+        </div>
+
+        <!-- "Projects" label on the background image -->
+        <span class="projects-label">Projects</span>
+
+        <!-- Skewed Panels -->
+
+        <!-- Panel: Pink (top-right area) -->
+        <div class="panel panel-pink" data-panel="pink">
+            <div class="panel-hover-img">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80" alt="">
             </div>
         </div>
 
-        <!-- Top-Right Section (Pink) -->
-        <div class="section section-2" data-index="1">
-            <div class="section-bg"></div>
-            <div class="section-image">
-                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80" alt="Abstract">
-            </div>
-            <div class="section-content">
-                <span class="corner-letter">d</span>
-                <span class="big-text">lve</span>
+        <!-- Panel: Dark (bottom-left, tilted trapezoid) -->
+        <div class="panel panel-dark" data-panel="dark">
+            <div class="panel-hover-img">
+                <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=1200&q=80" alt="">
             </div>
         </div>
 
-        <!-- Bottom-Left Section (Dark Teal) -->
-        <div class="section section-3" data-index="2">
-            <div class="section-bg"></div>
-            <div class="section-image">
-                <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=1200&q=80" alt="Nature">
-            </div>
-            <div class="section-content">
-                <span class="big-text"></span>
+        <!-- Panel: Light/Sage (bottom-right) -->
+        <div class="panel panel-light" data-panel="light">
+            <div class="panel-hover-img">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80" alt="">
             </div>
         </div>
 
-        <!-- Bottom-Right Section (Sage) -->
-        <div class="section section-4" data-index="3">
-            <div class="section-bg"></div>
-            <div class="section-image">
-                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80" alt="Mountains">
-            </div>
-            <div class="section-content">
-                <span class="big-text"></span>
-            </div>
+        <!-- Oversized Split Typography -->
+        <div class="typography-layer">
+            <span class="text-del">del</span>
+            <span class="text-ve">ve</span>
         </div>
 
-    </main>
+        <!-- Small decorative "d" top-right -->
+        <span class="corner-d">d</span>
+
+    </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="script.js"></script>
