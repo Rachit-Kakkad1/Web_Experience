@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORGE — Engineer Your Strength</title>
+    <meta name="description"
+        content="FORGE — Ultra-premium gym supplements. Engineer your strength with science-backed protein, creatine, and performance fuel.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- PRELOADER -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="preloader">
+        <div class="preloader__content">
+            <div class="preloader__logo">FORGE</div>
+            <div class="preloader__bar-track">
+                <div class="preloader__bar-fill"></div>
+            </div>
+            <div class="preloader__text">LOADING STRENGTH LAB...</div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- NAVIGATION -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <nav id="navbar" class="navbar">
+        <div class="navbar__logo">
+            <span class="navbar__logo-icon">⚡</span>
+            <span class="navbar__logo-text">FORGE</span>
+        </div>
+        <ul class="navbar__links">
+            <li><a href="#hero" class="navbar__link active">Home</a></li>
+            <li><a href="#products" class="navbar__link">Products</a></li>
+            <li><a href="#stack" class="navbar__link">Build Stack</a></li>
+            <li><a href="#transform" class="navbar__link">Transform</a></li>
+        </ul>
+        <button class="navbar__cta magnetic-btn" data-magnetic>
+            <span>Shop Now</span>
+            <div class="btn-glow"></div>
+        </button>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 1: CINEMATIC HERO -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section id="hero" class="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero__particles" id="particles"></div>
+
+        <div class="hero__content">
+            <div class="hero__badge">
+                <span class="hero__badge-dot"></span>
+                <span>NEW SEASON DROP</span>
+            </div>
+            <h1 class="hero__title" data-split>
+                <span class="hero__title-line">ENGINEER</span>
+                <span class="hero__title-line accent">YOUR</span>
+                <span class="hero__title-line">STRENGTH</span>
+            </h1>
+            <p class="hero__tagline" data-split>Science-forged supplements for those who refuse to be average.</p>
+            <div class="hero__actions">
+                <a href="#products" class="hero__btn hero__btn--primary magnetic-btn" data-magnetic>
+                    <span>Explore Products</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17l9.2-9.2M17 17V7H7" />
+                    </svg>
+                    <div class="btn-glow"></div>
+                </a>
+                <a href="#stack" class="hero__btn hero__btn--ghost magnetic-btn" data-magnetic>
+                    <span>Build Your Stack</span>
+                    <div class="btn-glow"></div>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero__scroll-hint" id="scroll-hint">
+            <div class="hero__scroll-line"></div>
+            <span>SCROLL TO EXPLORE</span>
+        </div>
+
+        <div class="hero__stats">
+            <div class="hero__stat">
+                <span class="hero__stat-num" data-count="50000">0</span>
+                <span class="hero__stat-label">Athletes Fueled</span>
+            </div>
+            <div class="hero__stat">
+                <span class="hero__stat-num" data-count="99">0</span>
+                <span class="hero__stat-label">% Pure Protein</span>
+            </div>
+            <div class="hero__stat">
+                <span class="hero__stat-num" data-count="12">0</span>
+                <span class="hero__stat-label">Lab Tested Flavors</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 2: SCROLL-DRIVEN PRODUCT SHOWCASE -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section id="products" class="products-intro">
+        <div class="products-intro__content">
+            <span class="section-label">THE ARSENAL</span>
+            <h2 class="section-title" data-split>Premium<br><span class="accent">Fuel</span> Collection</h2>
+            <p class="section-desc">Each formula engineered in our lab. Zero compromises. Maximum results.</p>
+        </div>
+    </section>
+
+    <!-- Product 1: Whey Isolate -->
+    <section class="product-scene" id="product-whey" data-product="whey" data-color="#39ff14">
+        <div class="product-scene__bg"></div>
+        <div class="product-scene__container">
+            <div class="product-scene__visual">
+                <div class="product-scene__glow"></div>
+                <div class="product-scene__image-wrap">
+                    <img src="https://images.unsplash.com/photo-1593095948071-474c5cc2c462?w=800&q=80"
+                        alt="Whey Protein Isolate" class="product-scene__image" />
+                </div>
+                <div class="product-scene__particles"></div>
+            </div>
+            <div class="product-scene__info">
+                <span class="product-scene__number">01</span>
+                <h3 class="product-scene__name">WHEY ISOLATE<br><span class="accent">PRO-X</span></h3>
+                <p class="product-scene__description">Ultra-filtered whey isolate with 25g pure protein per serving.
+                    Zero sugar. Zero fillers. Maximum muscle synthesis.</p>
+                <div class="product-scene__stats">
+                    <div class="stat-card">
+                        <span class="stat-card__value">25g</span>
+                        <span class="stat-card__label">Protein</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__value">0g</span>
+                        <span class="stat-card__label">Sugar</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__value">120</span>
+                        <span class="stat-card__label">Calories</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__value">5.5g</span>
+                        <span class="stat-card__label">BCAAs</span>
+                    </div>
+                </div>
+                <div class="product-scene__footer">
+                    <div class="product-scene__price">
+                        <span class="price-currency">₹</span>
+                        <span class="price-value" data-price="2499">0</span>
+                    </div>
+                    <button class="product-scene__cart-btn magnetic-btn" data-magnetic data-id="whey"
+                        data-name="Whey Isolate PRO-X" data-price="2499" data-protein="25">
+                        <span>Add to Stack</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product 2: Mass Gainer -->
+    <section class="product-scene" id="product-mass" data-product="mass" data-color="#00f0ff">
+        <div class="product-scene__bg"></div>
+        <div class="product-scene__container">
+            <div class="product-scene__visual">
+                <div class="product-scene__glow"></div>
+                <div class="product-scene__image-wrap">
+                    <img src="https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?w=800&q=80" alt="Mass Gainer"
+                        class="product-scene__image" />
+                </div>
+                <div class="product-scene__particles"></div>
+            </div>
+            <div class="product-scene__info">
+                <span class="product-scene__number">02</span>
+                <h3 class="product-scene__name">MASS GAINER<br><span class="accent">TITAN</span></h3>
+                <p class="product-scene__description">High-calorie mass builder with 50g protein and complex carbs.
+                    Engineered for serious size and strength gains.</p>
+                <div class="product-scene__stats">
+                    <div class="stat-card">
+                        <span class="stat-card__value">50g</span>
+                        <span class="stat-card__label">Protein</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__value">250g</span>
+                        <span class="stat-card__label">Carbs</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__value">1250</span>
+                        <span class="stat-card__label">Calories</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__value">12g</span>
+                        <span class="stat-card__label">BCAAs</span>
+                    </div>
+                </div>
+                <div class="product-scene__footer">
+                    <div class="product-scene__price">
+                        <span class="price-currency">₹</span>
+                        <span class="price-value" data-price="3499">0</span>
+                    </div>
+                    <button class="product-scene__cart-btn magnetic-btn" data-magnetic data-id="mass"
+                        data-name="Mass Gainer TITAN" data-price="3499" data-protein="50">
+                        <span>Add to Stack</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product 3: Creatine -->
+    <section class="product-scene" id="product-creatine" data-product="creatine" data-color="#a855f7">
+        <div class="product-scene__bg"></div>
+        <div class="product-scene__container">
+            <div class="product-scene__visual">
+                <div class="product-scene__glow"></div>
+                <div class="product-scene__image-wrap">
+                    <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=800&q=80"
+                        alt="Creatine Monohydrate" class="product-scene__image" />
+                </div>
+                <div class="product-scene__particles"></div>
+            </div>
+            <div class="product-scene__info">
+                <span class="product-scene__number">03</span>
+                <h3 class="product-scene__name">CREATINE<br><span class="accent">MONO-X</span></h3>
+                <p class="product-scene__description">Micronized creatine monohydrate for explosive power. 5g per
+                    serving. Lab-tested purity guaranteed.</p>
+                <div class="product-scene__stats">
+                    <div class="stat-card">
+                        <span class="stat-card__value">5g</span>
+                        <span class="stat-card__label">Creatine</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__value">0g</span>
+                        <span class="stat-card__label">Sugar</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__value">0</span>
+                        <span class="stat-card__label">Calories</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__value">99.9%</span>
+                        <span class="stat-card__label">Purity</span>
+                    </div>
+                </div>
+                <div class="product-scene__footer">
+                    <div class="product-scene__price">
+                        <span class="price-currency">₹</span>
+                        <span class="price-value" data-price="1299">0</span>
+                    </div>
+                    <button class="product-scene__cart-btn magnetic-btn" data-magnetic data-id="creatine"
+                        data-name="Creatine MONO-X" data-price="1299" data-protein="0">
+                        <span>Add to Stack</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product 4: Pre-Workout -->
+    <section class="product-scene" id="product-preworkout" data-product="preworkout" data-color="#ff6b35">
+        <div class="product-scene__bg"></div>
+        <div class="product-scene__container">
+            <div class="product-scene__visual">
+                <div class="product-scene__glow"></div>
+                <div class="product-scene__image-wrap">
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80" alt="Pre-Workout"
+                        class="product-scene__image" />
+                </div>
+                <div class="product-scene__particles"></div>
+            </div>
+            <div class="product-scene__info">
+                <span class="product-scene__number">04</span>
+                <h3 class="product-scene__name">PRE-WORKOUT<br><span class="accent">IGNITE</span></h3>
+                <p class="product-scene__description">Explosive energy formula with beta-alanine, caffeine, and
+                    citrulline malate. Unlock beast mode every session.</p>
+                <div class="product-scene__stats">
+                    <div class="stat-card">
+                        <span class="stat-card__value">300mg</span>
+                        <span class="stat-card__label">Caffeine</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__value">3.2g</span>
+                        <span class="stat-card__label">Beta-Alanine</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__value">6g</span>
+                        <span class="stat-card__label">Citrulline</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__value">∞</span>
+                        <span class="stat-card__label">Energy</span>
+                    </div>
+                </div>
+                <div class="product-scene__footer">
+                    <div class="product-scene__price">
+                        <span class="price-currency">₹</span>
+                        <span class="price-value" data-price="1999">0</span>
+                    </div>
+                    <button class="product-scene__cart-btn magnetic-btn" data-magnetic data-id="preworkout"
+                        data-name="Pre-Workout IGNITE" data-price="1999" data-protein="0">
+                        <span>Add to Stack</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 3: BUILD YOUR STACK -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section id="stack" class="stack-section">
+        <div class="stack-section__header">
+            <span class="section-label">INTERACTIVE LAB</span>
+            <h2 class="section-title" data-split>Build Your<br><span class="accent">Stack</span></h2>
+            <p class="section-desc">Select your supplements. Watch them power up your tray. Start your transformation.
+            </p>
+        </div>
+
+        <div class="stack-section__grid">
+            <!-- Stack Item Cards -->
+            <div class="stack-card" data-stack-id="whey" data-stack-name="Whey Isolate PRO-X" data-stack-price="2499"
+                data-stack-protein="25" data-stack-icon="🥛">
+                <div class="stack-card__glow"></div>
+                <div class="stack-card__icon">🥛</div>
+                <h4 class="stack-card__name">Whey Isolate</h4>
+                <span class="stack-card__protein">+25g protein</span>
+                <span class="stack-card__price">₹2,499</span>
+                <div class="stack-card__check">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="stack-card" data-stack-id="mass" data-stack-name="Mass Gainer TITAN" data-stack-price="3499"
+                data-stack-protein="50" data-stack-icon="💪">
+                <div class="stack-card__glow"></div>
+                <div class="stack-card__icon">💪</div>
+                <h4 class="stack-card__name">Mass Gainer</h4>
+                <span class="stack-card__protein">+50g protein</span>
+                <span class="stack-card__price">₹3,499</span>
+                <div class="stack-card__check">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="stack-card" data-stack-id="creatine" data-stack-name="Creatine MONO-X" data-stack-price="1299"
+                data-stack-protein="0" data-stack-icon="⚡">
+                <div class="stack-card__glow"></div>
+                <div class="stack-card__icon">⚡</div>
+                <h4 class="stack-card__name">Creatine</h4>
+                <span class="stack-card__protein">+5g creatine</span>
+                <span class="stack-card__price">₹1,299</span>
+                <div class="stack-card__check">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="stack-card" data-stack-id="preworkout" data-stack-name="Pre-Workout IGNITE"
+                data-stack-price="1999" data-stack-protein="0" data-stack-icon="🔥">
+                <div class="stack-card__glow"></div>
+                <div class="stack-card__icon">🔥</div>
+                <h4 class="stack-card__name">Pre-Workout</h4>
+                <span class="stack-card__protein">+300mg caffeine</span>
+                <span class="stack-card__price">₹1,999</span>
+                <div class="stack-card__check">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stack Tray -->
+        <div class="stack-tray" id="stack-tray">
+            <div class="stack-tray__header">
+                <h3 class="stack-tray__title">YOUR POWER TRAY</h3>
+                <div class="stack-tray__items" id="stack-tray-items">
+                    <!-- Dynamically filled -->
+                </div>
+            </div>
+            <div class="stack-tray__totals">
+                <div class="stack-tray__total-item">
+                    <span class="stack-tray__total-label">Total Protein</span>
+                    <span class="stack-tray__total-value"><span id="total-protein">0</span>g / serving</span>
+                </div>
+                <div class="stack-tray__total-item">
+                    <span class="stack-tray__total-label">Stack Price</span>
+                    <span class="stack-tray__total-value">₹<span id="total-price">0</span></span>
+                </div>
+            </div>
+            <button class="stack-tray__cta magnetic-btn" id="start-transform-btn" data-magnetic disabled>
+                <span>Start Transformation</span>
+                <div class="btn-glow"></div>
+            </button>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 4: ATHLETE TRANSFORMATION -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section id="transform" class="transform-section">
+        <div class="transform-section__header">
+            <span class="section-label">RESULTS</span>
+            <h2 class="section-title" data-split>Real<br><span class="accent">Transformations</span></h2>
+        </div>
+
+        <div class="transform-slider">
+            <div class="transform-slider__container" id="ba-slider">
+                <div class="transform-slider__before">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80"
+                        alt="Before transformation" />
+                    <span class="transform-slider__label">BEFORE</span>
+                </div>
+                <div class="transform-slider__after">
+                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&q=80"
+                        alt="After transformation" />
+                    <span class="transform-slider__label">AFTER</span>
+                </div>
+                <div class="transform-slider__handle" id="ba-handle">
+                    <div class="transform-slider__handle-line"></div>
+                    <div class="transform-slider__handle-circle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 8l-6-6-6 6M18 16l-6 6-6-6" />
+                        </svg>
+                    </div>
+                    <div class="transform-slider__handle-line"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="transform-quote">
+            <blockquote class="transform-quote__text" data-split>
+                "12 weeks. Same mirror. Different human. FORGE didn't just change my body — it rewired my discipline."
+            </blockquote>
+            <cite class="transform-quote__author">— ARJUN K., FORGE ATHLETE</cite>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 5: FINAL CTA EXPLOSION -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section id="final-cta" class="final-section">
+        <div class="final-section__particles" id="final-particles"></div>
+
+        <div class="final-section__product-grid" id="final-grid">
+            <div class="final-product" data-delay="0">🥛</div>
+            <div class="final-product" data-delay="0.1">💪</div>
+            <div class="final-product" data-delay="0.2">⚡</div>
+            <div class="final-product" data-delay="0.3">🔥</div>
+        </div>
+
+        <div class="final-section__content">
+            <h2 class="final-section__title" data-split>
+                <span>YOUR STRONGEST SELF</span>
+                <span class="accent">STARTS TODAY</span>
+            </h2>
+            <p class="final-section__subtitle">Join 50,000+ athletes who chose to stop wishing and start forging.</p>
+            <a href="#stack" class="final-section__btn magnetic-btn" data-magnetic>
+                <span>BEGIN YOUR JOURNEY</span>
+                <div class="btn-glow"></div>
+                <div class="btn-pulse"></div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- FOOTER -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="footer__content">
+            <div class="footer__brand">
+                <span class="footer__logo">⚡ FORGE</span>
+                <p class="footer__tagline">Engineer Your Strength™</p>
+            </div>
+            <div class="footer__links">
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">YouTube</a>
+            </div>
+            <p class="footer__copy">© 2026 FORGE Labs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SCRIPTS -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
