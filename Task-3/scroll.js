@@ -391,14 +391,32 @@ export function initScrollAnimations() {
             opacity: 0,
             duration: 0.5
         }, 0.3)
+        // God-level text reveal
         .to('#final-text', {
             opacity: 1,
-            duration: 0.4
-        }, 0.4)
+            scale: 1,
+            duration: 1, // Longer duration for grandeur
+            ease: 'power4.out'
+        }, 0.2)
         .from('#final-text', {
-            letterSpacing: '0.8em',
-            duration: 0.5
-        }, 0.4);
+            scale: 0.2, // Starts small "behind"
+            y: -50, // Slightly up/behind center
+            filter: 'blur(20px) brightness(2)', // Burst of light
+            letterSpacing: '0em',
+            duration: 1,
+            ease: 'power4.out'
+        }, 0.2)
+        // Reveal Footer
+        .to('.final-footer', {
+            opacity: 1,
+            duration: 1,
+            ease: 'power2.inOut'
+        }, '+=0.2')
+        .to('.final-footer__content', {
+            y: 0,
+            duration: 1,
+            ease: 'power2.out'
+        }, '<');
 
     // Nav visibility based on scroll
     ScrollTrigger.create({

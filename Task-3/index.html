@@ -126,6 +126,17 @@
     </main>
 
     <!-- ═══════════════════════════════════════════
+         FINAL FOOTER
+         ═══════════════════════════════════════════ -->
+    <footer class="final-footer" id="final-footer">
+        <div class="final-footer__content">
+            <span class="final-footer__text">EXPERIENCE COMPLETE</span>
+            <button class="final-footer__btn"
+                onclick="window.lenis ? window.lenis.scrollTo(0) : window.scrollTo(0,0)">REPLAY</button>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════
          SCROLL INDICATOR
          ═══════════════════════════════════════════ -->
     <div class="scroll-indicator" id="scrollIndicator">
@@ -155,6 +166,19 @@
     <!-- App Modules -->
     <script type="module" src="main.js"></script>
 
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script>
+        const lenis = new Lenis();
+
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+
+        gsap.ticker.lagSmoothing(0);
+    </script>
 </body>
 
 </html>
