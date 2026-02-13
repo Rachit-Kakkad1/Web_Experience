@@ -1,4 +1,6 @@
-/* ========== RESET ========== */
+/* ================================================
+   RESET & VARIABLES
+   ================================================ */
 *,
 *::before,
 *::after {
@@ -8,10 +10,13 @@
 }
 
 :root {
-    --dark: #0e2a28;
-    --pink: #e8a0bf;
-    --light: #d6d6cd;
-    --white: #ffffff;
+    --col-blue: #2c3e6b;
+    --col-pink: #e8a2c0;
+    --col-dark: #1c1c2e;
+    --col-sage: #b5c7b3;
+    --col-white: #ffffff;
+    --ff-sans: 'Instrument Sans', sans-serif;
+    --ff-serif: 'DM Serif Display', serif;
 }
 
 html,
@@ -19,205 +24,221 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    font-family: 'Inter', sans-serif;
-    background: #0a0a0a;
+    font-family: var(--ff-sans);
+    background: #0d0d0d;
 }
 
-/* ========== HERO SECTION ========== */
-.hero {
+/* ================================================
+   LAYOUT
+   ================================================ */
+.layout {
     position: relative;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
 }
 
-/* ========== BACKGROUND IMAGE ========== */
-.bg-image {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-.bg-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.7);
-}
-
-/* ========== "Projects" LABEL ========== */
-.projects-label {
-    position: absolute;
-    top: 10%;
-    left: 5%;
-    z-index: 5;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--white);
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    opacity: 0.9;
-}
-
-/* ========== PANELS (skewed overlapping shapes) ========== */
+/* ================================================
+   PANELS — TILTED CROSS
+   ================================================ */
 .panel {
     position: absolute;
+    inset: 0;
     overflow: hidden;
     cursor: pointer;
-    transition: filter 0.5s ease;
 }
 
-/* -- Pink panel: top-right diagonal slab -- */
-.panel-pink {
-    top: -15%;
-    right: -10%;
-    width: 65%;
-    height: 75%;
-    background: var(--pink);
-    clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 80%);
-    z-index: 1;
-    opacity: 0.92;
+/* Top-Left */
+.panel--tl {
+    clip-path: polygon(0 0, 46% 0, 50% 50%, 0 54%);
+    z-index: 4;
 }
 
-/* -- Dark panel: bottom-left tilted trapezoid -- */
-.panel-dark {
-    bottom: -12%;
-    left: -8%;
-    width: 75%;
-    height: 60%;
-    background: var(--dark);
-    clip-path: polygon(0% 20%, 100% 0%, 90% 100%, 0% 100%);
+/* Top-Right */
+.panel--tr {
+    clip-path: polygon(46% 0, 100% 0, 100% 46%, 50% 50%);
+    z-index: 3;
+}
+
+/* Bottom-Left */
+.panel--bl {
+    clip-path: polygon(0 54%, 50% 50%, 54% 100%, 0 100%);
     z-index: 2;
 }
 
-/* -- Light/sage panel: bottom-right -- */
-.panel-light {
-    bottom: -8%;
-    right: -8%;
-    width: 60%;
-    height: 55%;
-    background: var(--light);
-    clip-path: polygon(15% 0%, 100% 10%, 100% 100%, 0% 100%);
-    z-index: 3;
-    opacity: 0.9;
-}
-
-/* ========== PANEL HOVER IMAGES ========== */
-.panel-hover-img {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
+/* Bottom-Right */
+.panel--br {
+    clip-path: polygon(50% 50%, 100% 46%, 100% 100%, 54% 100%);
     z-index: 1;
 }
 
-.panel-hover-img img {
+/* ---- Background fills ---- */
+.panel__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transition: filter 0.6s ease;
+}
+
+.panel--tl .panel__bg {
+    background: var(--col-blue);
+}
+
+.panel--tr .panel__bg {
+    background: var(--col-pink);
+}
+
+.panel--bl .panel__bg {
+    background: var(--col-dark);
+}
+
+.panel--br .panel__bg {
+    background: var(--col-sage);
+}
+
+/* ---- Hover images ---- */
+.panel__img {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0;
+    transform: scale(1.12);
+    pointer-events: none;
+}
+
+.panel__img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
-/* ========== OVERSIZED SPLIT TYPOGRAPHY ========== */
-.typography-layer {
+/* ================================================
+   SHARED "delve" TEXT — SAME POSITION IN EVERY PANEL
+   Each panel clips its own copy, creating the split illusion.
+   ================================================ */
+.panel__text {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     z-index: 10;
     pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.text-del,
-.text-ve {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(8rem, 20vw, 22rem);
+.panel__text span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    font-family: var(--ff-serif);
+    font-size: clamp(7rem, 18vw, 22rem);
+    font-weight: 400;
+    color: var(--col-white);
     line-height: 0.85;
-    letter-spacing: 0.01em;
-    text-transform: lowercase;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+    user-select: none;
+}
+
+/* ---- "Projects" label (top-left of section 1) ---- */
+.panel__label {
     position: absolute;
-}
-
-/* "del" sits on the dark panel area — lower-left, white */
-.text-del {
-    color: var(--white);
-    bottom: 18%;
-    left: 5%;
+    top: 8%;
+    left: 6%;
     z-index: 12;
-    mix-blend-mode: difference;
-}
-
-/* "ve" sits on the light panel area — lower-right, faded */
-.text-ve {
-    color: var(--white);
-    bottom: 18%;
-    left: 38%;
-    z-index: 12;
-    opacity: 0.22;
-    mix-blend-mode: difference;
-}
-
-/* ========== CORNER "d" ========== */
-.corner-d {
-    position: absolute;
-    top: 5%;
-    right: 6%;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    color: var(--white);
-    opacity: 0.45;
-    z-index: 5;
-    mix-blend-mode: difference;
-    text-transform: lowercase;
+    font-family: var(--ff-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--col-white);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.85;
     pointer-events: none;
 }
 
-/* ========== PANEL DIMMING ON HOVER ========== */
-.panel.dimmed {
-    filter: brightness(0.5);
+/* ---- "d" accent (top-right of section 2) ---- */
+.panel__accent {
+    position: absolute;
+    top: 7%;
+    right: 6%;
+    z-index: 12;
+    font-family: var(--ff-serif);
+    font-size: clamp(2rem, 4vw, 4.5rem);
+    color: var(--col-white);
+    opacity: 0.45;
+    pointer-events: none;
 }
 
-/* Background dim when panels hovered */
-.bg-image.dimmed img {
-    filter: brightness(0.35);
-    transition: filter 0.5s ease;
+/* ================================================
+   PARTITION LINES
+   ================================================ */
+.cross-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    pointer-events: none;
 }
 
-/* ========== RESPONSIVE ========== */
+.cross-lines line {
+    stroke: rgba(255, 255, 255, 0.15);
+    stroke-width: 1.2;
+    vector-effect: non-scaling-stroke;
+}
+
+/* ================================================
+   CENTER DOT
+   ================================================ */
+.center-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    z-index: 55;
+    pointer-events: none;
+    backdrop-filter: blur(4px);
+}
+
+/* ================================================
+   DIMMED STATE
+   ================================================ */
+.panel.is-dimmed .panel__bg {
+    filter: brightness(0.45);
+}
+
+.panel.is-dimmed .panel__text span {
+    opacity: 0.25;
+}
+
+.panel.is-dimmed .panel__label,
+.panel.is-dimmed .panel__accent {
+    opacity: 0.15;
+}
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
 @media (max-width: 768px) {
-
-    .text-del,
-    .text-ve {
-        font-size: clamp(5rem, 16vw, 10rem);
+    .panel__text span {
+        font-size: clamp(4rem, 14vw, 10rem);
     }
 
-    .text-del {
-        bottom: 22%;
-        left: 3%;
-    }
-
-    .text-ve {
-        bottom: 22%;
-        left: 35%;
-    }
-
-    .panel-pink {
-        width: 70%;
-        height: 65%;
-    }
-
-    .panel-dark {
-        width: 85%;
-        height: 55%;
-    }
-
-    .panel-light {
-        width: 65%;
-        height: 50%;
-    }
-
-    .projects-label {
-        top: 6%;
+    .panel__label {
+        top: 5%;
         left: 4%;
         font-size: 0.65rem;
+    }
+
+    .panel__accent {
+        top: 4%;
+        right: 4%;
     }
 }
